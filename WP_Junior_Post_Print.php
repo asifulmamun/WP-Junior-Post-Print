@@ -8,8 +8,8 @@ Author URI: https://asifulmamun.info.bd
 
 */
 
-if(!class_exists('Custom_Post_URL')){
-    class Custom_Post_URL {
+if(!class_exists('WP_Junior_Post_Print')){
+    class WP_Junior_Post_Print {
         
         public function __construct() {
             add_filter('query_vars', array($this, 'custom_post_url_query_vars'));
@@ -36,4 +36,7 @@ if(!class_exists('Custom_Post_URL')){
     }
 }
 
-new Custom_Post_URL();
+new WP_Junior_Post_Print();
+
+
+
