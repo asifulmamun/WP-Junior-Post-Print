@@ -1,0 +1,18 @@
+{
+    "name": "twitservice/wp_junior_post_print",
+    "description": "This is print the post as a junior and with custom url",
+    "type": "wp-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "Al Mamun",
+            "email": "asifulmamun@gmail.com"
+        }
+    ],
+    "require": {}
+}
