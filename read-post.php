@@ -66,7 +66,7 @@
 
 
 
-        <img class="" 
+
         <img src="<?php  echo $post_thumbnail_url; ?>" alt="<?php echo $post_title; ?>">
 
 
