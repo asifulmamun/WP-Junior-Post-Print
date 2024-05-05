@@ -52,13 +52,30 @@
     <link rel="stylesheet" href="<?php echo plugins_url('assets/dist/css/app.css', __FILE__); ?>">
 </head>
 <body>
+    <main id="main" class="container mx-auto">
 
-    <main id="main">
+            <div class="flex justify-center">
+                <img class="" src="<?php  echo $logo_url; ?>" alt="<?php echo $site_title; ?>">
+            </div>
+
+            <div class="grid grid-cols-12 gap-4">
+                <div>রবিবার</div>
+                <div class="col-span-10">২২ বৈশাখ, ১৪৩১, ৫ মে, ২০২৪, ২৫ শাওয়াল, ১৪৪৫</div>
+                <div>গ্রীষ্মকাল</div>
+            </div>
+
+
+
+        <img class="" 
+        <img src="<?php  echo $post_thumbnail_url; ?>" alt="<?php echo $post_title; ?>">
+
+
         <div class="text-red-500">
-            <?php  echo $post_thumbnail_url; ?>
+            
         </div>
-    </main>
 
+
+    </main>
     <script src="<?php echo plugins_url('assets/dist/js/app.js', __FILE__); ?>"></script>
 </body>
 </html>
