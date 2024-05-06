@@ -64,27 +64,23 @@
                 $post_content = get_the_content();
                 $post_thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); // Use 'full' to get the full size image URL
                 $post_date = get_the_date(); // Get post date
+                $post_time = get_the_time(); // Get post time
 
 
                 // Convert date to Bangla
                 $bangla_date = '';
-
                 // Extract day, month, and year
                 $day = date('d', strtotime($post_date));
                 $english_month = date('F', strtotime($post_date));
                 $year = english_to_bangla_number(date('Y', strtotime($post_date)));
-
                 // Convert day to Bangla with leading zero
                 $bangla_day = english_to_bangla_number($day); // Convert to Bangla numerals
-
                 // Convert month to Bangla
                 $bangla_month = english_to_bangla_month($english_month);
-
                 // Format Bangla date
                 $bangla_date .= $bangla_day . ' ' . $bangla_month . ', ' . $year;
 
 
-                $post_time = get_the_time(); // Get post time
 ?>
 <!DOCTYPE html>
 <html lang="en">
