@@ -4,8 +4,11 @@
 
 @tailwind utilities;
 
-/* 
-body{
-    @apply bg-indigo-500;
 
-} */
+/* Printing 2 Column at paragraph o r content in single print page */
+@media print {
+    .print\:columns-2 {
+        @apply columns-2;
+        /* column-count: 2; */
+    }
+}

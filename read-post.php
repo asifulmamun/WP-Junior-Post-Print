@@ -45,7 +45,6 @@
     }
 
 
-
     if ($post_id):
         // Set up the post query
         $post_query = new WP_Query(array(
@@ -106,22 +105,38 @@
             <img class="" src="<?php  echo $logo_url; ?>" alt="<?php echo $site_title; ?>">
         </div>
 
-        <div class="grid grid-cols-12 gap-4">
-            <div>রবিবার</div>
-            <div class="col-span-10">২২ বৈশাখ, ১৪৩১, ৫ মে, ২০২৪, ২৫ শাওয়াল, ১৪৪৫</div>
-            <div>গ্রীষ্মকাল</div>
+        <div class="grid grid-cols-12 gap-4 bg-black text-white my-3">
+            <div id="dayString" class="bg-yellow-300 text-center font-bold text-black py-1.5"></div>
+            <div id="dateString" class="col-span-10 font-bold py-1.5"></div>
+            <div></div>
         </div>
 
         <img class="w-full" src="<?php  echo $post_thumbnail_url; ?>" alt="<?php echo $post_title; ?>">
-        <h1 class="text-red-500 text-5xl font-bold text-center"><?php echo $post_title;?></h1>
-        <div class="md:columns-2">
-            <h3 class="font-bold text-lg"><?php echo $site_title; ?>: <?php echo $bangla_date; ?></h3>
+        <h1 class="text-red-500 text-5xl font-bold text-center my-8"><?php echo $post_title;?></h1>
+        <div class="sm:columns-1 md:columns-2 print:columns-2">
+            <h3 class="font-bold text-lg flex py-2">
+                <svg class="w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                </svg>
+                <?php echo $site_title; ?>: <?php echo $bangla_date; ?>
+            </h3>
             <?php echo $post_content; ?>
         </div>
 
 
 
     </main>
+    <button id="printBtn">Print</button>
+    <!-- https://github.com/AhmedMRaihan/BanglaDateJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/AhmedMRaihan/BanglaDateJS@master/src/buetDateTime.js"></script>
+    <script>
+        // var customDate = new Date();
+        var dayString = new buetDateConverter().convert("l");
+        var dateString = new buetDateConverter().convert("j F, Y");
+
+        document.getElementById('dayString').textContent = dayString;
+        document.getElementById('dateString').textContent = dateString;
+    </script>
     <script src="<?php echo plugins_url('assets/dist/js/app.js', __FILE__); ?>"></script>
 </body>
 </html>

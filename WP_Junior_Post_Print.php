@@ -8,6 +8,14 @@ Author URI: https://asifulmamun.info.bd
 
 */
 
+define('PLUGIN_DIR', plugin_dir_path(__FILE__) );
+define('FILE_DIR', dirname( __FILE__ ) );
+
+if( file_exists( FILE_DIR . '/vendor/autoload.php' ) ){
+    require_once FILE_DIR . '/vendor/autoload.php';
+}
+
+
 if(!class_exists('WP_Junior_Post_Print')){
     class WP_Junior_Post_Print {
         
