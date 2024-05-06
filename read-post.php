@@ -16,6 +16,36 @@
     $favicon_url = get_site_icon_url(); // favicon url
     $post_id = isset($_GET['post']) ? $_GET['post'] : '';
 
+
+    // Function to convert English month name to Bangla
+    function english_to_bangla_month($month) {
+        $bangla_months = array(
+            'January' => 'জানুয়ারি',
+            'February' => 'ফেব্রুয়ারি',
+            'March' => 'মার্চ',
+            'April' => 'এপ্রিল',
+            'May' => 'মে',
+            'June' => 'জুন',
+            'July' => 'জুলাই',
+            'August' => 'আগস্ট',
+            'September' => 'সেপ্টেম্বর',
+            'October' => 'অক্টোবর',
+            'November' => 'নভেম্বর',
+            'December' => 'ডিসেম্বর'
+        );
+
+        return $bangla_months[$month];
+    }
+
+    // Function to convert English digits to Bangla numerals
+    function english_to_bangla_number($number) {
+        $english_numbers = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+        $bangla_numbers = array('০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯');
+        return str_replace($english_numbers, $bangla_numbers, $number);
+    }
+
+
+
     if ($post_id):
         // Set up the post query
         $post_query = new WP_Query(array(
@@ -33,6 +63,28 @@
                 $post_title = get_the_title();
                 $post_content = get_the_content();
                 $post_thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); // Use 'full' to get the full size image URL
+                $post_date = get_the_date(); // Get post date
+
+
+                // Convert date to Bangla
+                $bangla_date = '';
+
+                // Extract day, month, and year
+                $day = date('d', strtotime($post_date));
+                $english_month = date('F', strtotime($post_date));
+                $year = english_to_bangla_number(date('Y', strtotime($post_date)));
+
+                // Convert day to Bangla with leading zero
+                $bangla_day = english_to_bangla_number($day); // Convert to Bangla numerals
+
+                // Convert month to Bangla
+                $bangla_month = english_to_bangla_month($english_month);
+
+                // Format Bangla date
+                $bangla_date .= $bangla_day . ' ' . $bangla_month . ', ' . $year;
+
+
+                $post_time = get_the_time(); // Get post time
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,27 +104,25 @@
     <link rel="stylesheet" href="<?php echo plugins_url('assets/dist/css/app.css', __FILE__); ?>">
 </head>
 <body>
-    <main id="main" class="container mx-auto">
+    <main id="main" class="w-9/12 container mx-auto px-4">
 
-            <div class="flex justify-center">
-                <img class="" src="<?php  echo $logo_url; ?>" alt="<?php echo $site_title; ?>">
-            </div>
-
-            <div class="grid grid-cols-12 gap-4">
-                <div>রবিবার</div>
-                <div class="col-span-10">২২ বৈশাখ, ১৪৩১, ৫ মে, ২০২৪, ২৫ শাওয়াল, ১৪৪৫</div>
-                <div>গ্রীষ্মকাল</div>
-            </div>
-
-
-
-
-        <img src="<?php  echo $post_thumbnail_url; ?>" alt="<?php echo $post_title; ?>">
-
-
-        <div class="text-red-500">
-            
+        <div class="flex justify-center">
+            <img class="" src="<?php  echo $logo_url; ?>" alt="<?php echo $site_title; ?>">
         </div>
+
+        <div class="grid grid-cols-12 gap-4">
+            <div>রবিবার</div>
+            <div class="col-span-10">২২ বৈশাখ, ১৪৩১, ৫ মে, ২০২৪, ২৫ শাওয়াল, ১৪৪৫</div>
+            <div>গ্রীষ্মকাল</div>
+        </div>
+
+        <img class="w-full" src="<?php  echo $post_thumbnail_url; ?>" alt="<?php echo $post_title; ?>">
+        <h1 class="text-red-500 text-5xl font-bold text-center"><?php echo $post_title;?></h1>
+        <div class="md:columns-2">
+            <h3 class="font-bold text-lg"><?php echo $site_title; ?>: <?php echo $bangla_date; ?></h3>
+            <?php echo $post_content; ?>
+        </div>
+
 
 
     </main>
