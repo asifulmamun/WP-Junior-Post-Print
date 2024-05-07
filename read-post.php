@@ -17,32 +17,32 @@
     $post_id = isset($_GET['post']) ? $_GET['post'] : '';
 
 
-    // Function to convert English month name to Bangla
-    function english_to_bangla_month($month) {
-        $bangla_months = array(
-            'January' => 'জানুয়ারি',
-            'February' => 'ফেব্রুয়ারি',
-            'March' => 'মার্চ',
-            'April' => 'এপ্রিল',
-            'May' => 'মে',
-            'June' => 'জুন',
-            'July' => 'জুলাই',
-            'August' => 'আগস্ট',
-            'September' => 'সেপ্টেম্বর',
-            'October' => 'অক্টোবর',
-            'November' => 'নভেম্বর',
-            'December' => 'ডিসেম্বর'
-        );
+    // // Function to convert English month name to Bangla
+    // function english_to_bangla_month($month) {
+    //     $bangla_months = array(
+    //         'January' => 'জানুয়ারি',
+    //         'February' => 'ফেব্রুয়ারি',
+    //         'March' => 'মার্চ',
+    //         'April' => 'এপ্রিল',
+    //         'May' => 'মে',
+    //         'June' => 'জুন',
+    //         'July' => 'জুলাই',
+    //         'August' => 'আগস্ট',
+    //         'September' => 'সেপ্টেম্বর',
+    //         'October' => 'অক্টোবর',
+    //         'November' => 'নভেম্বর',
+    //         'December' => 'ডিসেম্বর'
+    //     );
 
-        return $bangla_months[$month];
-    }
+    //     return $bangla_months[$month];
+    // }
 
-    // Function to convert English digits to Bangla numerals
-    function english_to_bangla_number($number) {
-        $english_numbers = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
-        $bangla_numbers = array('০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯');
-        return str_replace($english_numbers, $bangla_numbers, $number);
-    }
+    // // Function to convert English digits to Bangla numerals
+    // function english_to_bangla_number($number) {
+    //     $english_numbers = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+    //     $bangla_numbers = array('০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯');
+    //     return str_replace($english_numbers, $bangla_numbers, $number);
+    // }
 
 
     if ($post_id):
@@ -66,18 +66,18 @@
                 $post_time = get_the_time(); // Get post time
 
 
-                // Convert date to Bangla
-                $bangla_date = '';
-                // Extract day, month, and year
-                $day = date('d', strtotime($post_date));
-                $english_month = date('F', strtotime($post_date));
-                $year = english_to_bangla_number(date('Y', strtotime($post_date)));
-                // Convert day to Bangla with leading zero
-                $bangla_day = english_to_bangla_number($day); // Convert to Bangla numerals
-                // Convert month to Bangla
-                $bangla_month = english_to_bangla_month($english_month);
-                // Format Bangla date
-                $bangla_date .= $bangla_day . ' ' . $bangla_month . ', ' . $year;
+                // // Convert date to Bangla
+                // $bangla_date = '';
+                // // Extract day, month, and year
+                // $day = date('d', strtotime($post_date));
+                // $english_month = date('F', strtotime($post_date));
+                // $year = english_to_bangla_number(date('Y', strtotime($post_date)));
+                // // Convert day to Bangla with leading zero
+                // $bangla_day = english_to_bangla_number($day); // Convert to Bangla numerals
+                // // Convert month to Bangla
+                // $bangla_month = english_to_bangla_month($english_month);
+                // // Format Bangla date
+                // $bangla_date .= $bangla_day . ' ' . $bangla_month . ', ' . $year;
 
 
 ?>
