@@ -102,7 +102,7 @@
     <main id="main" class="w-7/12 container mx-auto p-4">
 
         <div class="flex justify-center">
-            <a href="<?php echo get_home_url(); ?>"><img id="logo" class="max-h-52" src="<?php echo ($logo_url ? $logo_url : 'https://dailymuktisamachar.com/wp-content/uploads/2024/02/DMS-Logo.png'); ?>" alt="<?php echo $site_title; ?>"></a>
+            <a href="<?php echo get_home_url(); ?>"><img id="logo" class="max-h-52" src="https://dailymuktisamachar.com/wp-content/uploads/2024/02/DMS-Logo.png<?php //echo ($logo_url ? $logo_url : 'https://dailymuktisamachar.com/wp-content/uploads/2024/02/DMS-Logo.png'); ?>" alt="<?php echo $site_title; ?>"></a>
         </div>
 
         <div class="grid grid-cols-12 gap-4 bg-black text-white my-3">
