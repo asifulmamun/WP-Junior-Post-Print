@@ -41,7 +41,12 @@ console.log("Log app.js");
 // });
 
 
-
+// Print
 document.getElementById('printBtn').addEventListener('click', function() {
   window.print();
+});
+
+// Go Back
+document.getElementById("goBackButton").addEventListener("click", function() {
+  window.history.back();
 });
