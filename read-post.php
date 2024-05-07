@@ -102,7 +102,7 @@
     <main id="main" class="w-7/12 container mx-auto p-4">
 
         <div class="flex justify-center">
-            <img id="logo" class="max-h-52" src="<?php  echo $logo_url; ?>" alt="<?php echo $site_title; ?>">
+            <a href="<?php echo get_home_url(); ?>"><img id="logo" class="max-h-52" src="<?php  echo $logo_url; ?>" alt="<?php echo $site_title; ?>"></a>
         </div>
 
         <div class="grid grid-cols-12 gap-4 bg-black text-white my-3">
@@ -127,8 +127,9 @@
 
     </main>
 
-    <footer id="footer" class="w-full py-3">
-        <button id="printBtn" class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Print</button>
+    <footer id="footer" class="flex mx-auto gap-3 justify-center w-full py-3">
+        <button id="printBtn" class="mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Print</button>
+        <button id="goBackButton" class="mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Back</button>
     </footer>
 
     <!-- https://github.com/AhmedMRaihan/BanglaDateJS -->
