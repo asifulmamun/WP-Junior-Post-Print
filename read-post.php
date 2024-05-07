@@ -99,21 +99,21 @@
     <link rel="stylesheet" href="<?php echo plugins_url('assets/dist/css/app.css', __FILE__); ?>">
 </head>
 <body>
-    <main id="main" class="w-7/12 container mx-auto p-4">
+    <main id="main" class="w-full md:w-7/12 container mx-auto p-2 md:p-4">
 
         <div class="flex justify-center">
             <a href="<?php echo get_home_url(); ?>"><img id="logo" class="max-h-52" src="https://dailymuktisamachar.com/wp-content/uploads/2024/02/DMS-Logo.png<?php //echo ($logo_url ? $logo_url : 'https://dailymuktisamachar.com/wp-content/uploads/2024/02/DMS-Logo.png'); ?>" alt="<?php echo $site_title; ?>"></a>
         </div>
 
         <div class="grid grid-cols-12 gap-4 bg-black text-white my-3">
-            <div id="dayString" class="col-span-2 bg-yellow-300 text-center font-bold text-black py-1.5"></div>
-            <div id="dateString" class="col-span-8 font-bold py-1.5"></div>
+            <div id="dayString" class="col-span-4 md:col-span-2 bg-yellow-300 text-center font-bold text-black py-1.5"></div>
+            <div id="dateString" class="col-span-8 md:col-span-8 font-bold py-1.5"></div>
         </div>
 
         <img class="w-full print:img-fit" src="<?php  echo $post_thumbnail_url; ?>" alt="<?php echo $post_title; ?>">
-        <h1 id="title" class="text-red-500 text-4xl font-bold text-center my-8"><?php echo $post_title;?></h1>
-        <div class="sm:columns-1 md:columns-2 print:columns-2">
-            <h3 class="font-bold text-lg flex py-2">
+        <h1 id="title" class="text-red-500 text-xl md:text-4xl font-bold text-center my-8"><?php echo $post_title;?></h1>
+        <div class="columns-2 print:columns-2 text-sm md:text-base">
+            <h3 class="font-bold text-lg flex pb-2">
                 <svg class="w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                 </svg>

@@ -15,6 +15,11 @@ body{
     // background-color: $primary_color;
 }
 
+
+#main p{
+   line-height: 1.8rem;
+}
+
 @media print {
 
     // Custom image size print:img-fit
@@ -25,7 +30,7 @@ body{
     }
 
     // Hide the print btn
-    footer{
+    #footer{
         display: none;
     }
 

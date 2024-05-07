@@ -531,14 +531,11 @@ video {
 .static {
   position: static;
 }
-.col-span-10 {
-  grid-column: span 10 / span 10;
+.col-span-4 {
+  grid-column: span 4 / span 4;
 }
 .col-span-8 {
   grid-column: span 8 / span 8;
-}
-.col-span-2 {
-  grid-column: span 2 / span 2;
 }
 .mx-auto {
   margin-left: auto;
@@ -570,14 +567,15 @@ video {
 .w-6 {
   width: 1.5rem;
 }
-.w-7\/12 {
-  width: 58.333333%;
-}
 .w-8 {
   width: 2rem;
 }
 .w-full {
   width: 100%;
+}
+.columns-2 {
+  -moz-columns: 2;
+       columns: 2;
 }
 .grid-cols-12 {
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -609,8 +607,8 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(253 224 71 / var(--tw-bg-opacity));
 }
-.p-4 {
-  padding: 1rem;
+.p-2 {
+  padding: 0.5rem;
 }
 .px-8 {
   padding-left: 2rem;
@@ -632,15 +630,22 @@ video {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
 .text-center {
   text-align: center;
 }
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
 .text-lg {
   font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.text-xl {
+  font-size: 1.25rem;
   line-height: 1.75rem;
 }
 .font-bold {
@@ -664,6 +669,9 @@ video {
 :root {
   --primary_color: blue; }
 
+#main p {
+  line-height: 1.8rem; }
+
 @media print {
   .print\:img-fit {
     width: auto;
@@ -671,7 +679,7 @@ video {
     margin-right: auto;
     max-height: 30vh;
   }
-  footer {
+  #footer {
     display: none; }
   #logo {
     max-height: 9rem;
@@ -698,19 +706,32 @@ video {
   outline-offset: 2px;
 }
 
-@media (min-width: 640px) {
-
-  .sm\:columns-1 {
-    -moz-columns: 1;
-         columns: 1;
-  }
-}
-
 @media (min-width: 768px) {
 
-  .md\:columns-2 {
-    -moz-columns: 2;
-         columns: 2;
+  .md\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
+  .md\:col-span-8 {
+    grid-column: span 8 / span 8;
+  }
+
+  .md\:w-7\/12 {
+    width: 58.333333%;
+  }
+
+  .md\:p-4 {
+    padding: 1rem;
+  }
+
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .md\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 }
 
