@@ -99,10 +99,10 @@
     <link rel="stylesheet" href="<?php echo plugins_url('assets/dist/css/app.css', __FILE__); ?>">
 </head>
 <body>
-    <main id="main" class="w-9/12 container mx-auto px-4">
+    <main id="main" class="w-7/12 container mx-auto p-4">
 
         <div class="flex justify-center">
-            <img class="" src="<?php  echo $logo_url; ?>" alt="<?php echo $site_title; ?>">
+            <img id="logo" class="max-h-52" src="<?php  echo $logo_url; ?>" alt="<?php echo $site_title; ?>">
         </div>
 
         <div class="grid grid-cols-12 gap-4 bg-black text-white my-3">
@@ -111,8 +111,8 @@
             <div></div>
         </div>
 
-        <img class="w-full" src="<?php  echo $post_thumbnail_url; ?>" alt="<?php echo $post_title; ?>">
-        <h1 class="text-red-500 text-5xl font-bold text-center my-8"><?php echo $post_title;?></h1>
+        <img class="w-full print:img-fit" src="<?php  echo $post_thumbnail_url; ?>" alt="<?php echo $post_title; ?>">
+        <h1 id="title" class="text-red-500 text-4xl font-bold text-center my-8"><?php echo $post_title;?></h1>
         <div class="sm:columns-1 md:columns-2 print:columns-2">
             <h3 class="font-bold text-lg flex py-2">
                 <svg class="w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -126,14 +126,17 @@
 
 
     </main>
-    <button id="printBtn">Print</button>
+
+    <footer id="footer" class="w-full py-3">
+        <button id="printBtn" class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Print</button>
+    </footer>
+
     <!-- https://github.com/AhmedMRaihan/BanglaDateJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/AhmedMRaihan/BanglaDateJS@master/src/buetDateTime.js"></script>
     <script>
         // var customDate = new Date();
         var dayString = new buetDateConverter().convert("l");
         var dateString = new buetDateConverter().convert("j F, Y");
-
         document.getElementById('dayString').textContent = dayString;
         document.getElementById('dateString').textContent = dateString;
     </script>

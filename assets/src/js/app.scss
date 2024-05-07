@@ -14,3 +14,35 @@ body{
     // background-color: var(--primary_color);
     // background-color: $primary_color;
 }
+
+@media print {
+
+    // Custom image size print:img-fit
+    .print\:img-fit {
+        @apply w-auto;
+        @apply mx-auto;
+        max-height: 30vh;
+    }
+
+    // Hide the print btn
+    footer{
+        display: none;
+    }
+
+
+    #logo{
+        @apply max-h-36;
+    }
+
+    #title{
+        @apply text-xl;
+        @apply text-black;
+    }
+
+    // Main section
+    #main{
+        @apply w-full;
+        @apply px-1;
+    }
+
+  }
