@@ -100,16 +100,13 @@
 </head>
 <body>
     <main id="main" class="w-full md:w-7/12 container mx-auto p-2 md:p-4">
-
         <div class="flex justify-center">
             <a href="<?php echo get_home_url(); ?>"><img id="logo" class="max-h-52" src="https://dailymuktisamachar.com/wp-content/uploads/2024/02/DMS-Logo.png<?php //echo ($logo_url ? $logo_url : 'https://dailymuktisamachar.com/wp-content/uploads/2024/02/DMS-Logo.png'); ?>" alt="<?php echo $site_title; ?>"></a>
         </div>
-
         <div class="grid grid-cols-12 gap-4 bg-black text-white my-3">
             <div id="dayString" class="col-span-4 md:col-span-2 bg-yellow-300 text-center font-bold text-black py-1.5"></div>
             <div id="dateString" class="col-span-8 md:col-span-8 font-bold py-1.5"></div>
         </div>
-
         <img class="w-full print:img-fit" src="<?php  echo $post_thumbnail_url; ?>" alt="<?php echo $post_title; ?>">
         <h1 id="title" class="text-red-500 text-xl md:text-4xl font-bold text-center my-8"><?php echo $post_title;?></h1>
         <div class="columns-2 print:columns-2 text-sm md:text-base">
@@ -121,16 +118,11 @@
             </h3>
             <?php echo $post_content; ?>
         </div>
-
-
-
     </main>
-
     <footer id="footer" class="flex mx-auto gap-3 justify-center w-full py-3">
         <button id="printBtn" class="mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Print</button>
         <button id="goBackButton" class="mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Back</button>
     </footer>
-
     <!-- https://github.com/AhmedMRaihan/BanglaDateJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/AhmedMRaihan/BanglaDateJS@master/src/buetDateTime.js"></script>
     <script>
@@ -155,5 +147,4 @@
         // No post ID provided
         echo 'No post ID provided.';
     endif;
-
 ?>
