@@ -106,9 +106,8 @@
         </div>
 
         <div class="grid grid-cols-12 gap-4 bg-black text-white my-3">
-            <div id="dayString" class="bg-yellow-300 text-center font-bold text-black py-1.5"></div>
-            <div id="dateString" class="col-span-10 font-bold py-1.5"></div>
-            <div></div>
+            <div id="dayString" class="col-span-2 bg-yellow-300 text-center font-bold text-black py-1.5"></div>
+            <div id="dateString" class="col-span-8 font-bold py-1.5"></div>
         </div>
 
         <img class="w-full print:img-fit" src="<?php  echo $post_thumbnail_url; ?>" alt="<?php echo $post_title; ?>">
