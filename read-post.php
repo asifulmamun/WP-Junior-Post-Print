@@ -101,7 +101,7 @@
 <body>
     <main id="main" class="w-full md:w-7/12 container mx-auto p-2 md:p-4">
         <div class="flex justify-center">
-            <a href="<?php echo get_home_url(); ?>"><img id="logo" class="max-h-52" src="https://dailymuktisamachar.com/wp-content/uploads/2024/02/DMS-Logo.png<?php //echo ($logo_url ? $logo_url : 'https://dailymuktisamachar.com/wp-content/uploads/2024/02/DMS-Logo.png'); ?>" alt="<?php echo $site_title; ?>"></a>
+            <a href="<?php echo get_home_url(); ?>"><img id="logo" class="max-h-52" src="https://dailymuktisamachar.com/wp-content/uploads/2024/02/DMS-Logo.png<?php //echo $logo_url ; ?>" alt="<?php echo $site_title; ?>"></a>
         </div>
         <div class="grid grid-cols-12 gap-4 bg-black text-white my-3">
             <div id="dayString" class="col-span-4 md:col-span-2 bg-yellow-300 text-center font-bold text-black py-1.5"></div>
@@ -122,6 +122,7 @@
     <footer id="footer" class="flex mx-auto gap-3 justify-center w-full py-3">
         <button id="printBtn" class="mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Print</button>
         <button id="goBackButton" class="mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Back</button>
+        <button id="download" class="mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Download</button>
     </footer>
     <!-- https://github.com/AhmedMRaihan/BanglaDateJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/AhmedMRaihan/BanglaDateJS@master/src/buetDateTime.js"></script>
@@ -132,6 +133,31 @@
         document.getElementById('dayString').textContent = dayString;
         document.getElementById('dateString').textContent = dateString;
     </script>
+
+    <!-- https://html2canvas.hertzen.com/ -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script>
+        document.getElementById('download').addEventListener('click', downloadCanvasAsImage);
+        function downloadCanvasAsImage() {
+            html2canvas(document.querySelector("#main")).then(canvas => {
+                // Convert canvas to data URL
+                const dataURL = canvas.toDataURL('image/png');
+
+                // Create a link element
+                const downloadLink = document.createElement('a');
+                downloadLink.href = dataURL;
+                
+                // Set the download attribute to specify the file name
+                downloadLink.download = '<?php echo strip_tags(get_the_title()); // title ?> - <?php echo $site_title; ?>';
+                
+                // Simulate a click to trigger the download
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            });
+        }
+    </script>
+
     <script src="<?php echo plugins_url('assets/dist/js/app.js', __FILE__); ?>"></script>
 </body>
 </html>
