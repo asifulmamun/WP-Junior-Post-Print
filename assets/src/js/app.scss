@@ -8,7 +8,10 @@ $primary_color: orange;
     --primary_color: blue;
 }
 
-
+html {
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+}
 body{
     // @apply bg-red-500;
     // background-color: var(--primary_color);
@@ -16,9 +19,16 @@ body{
 }
 
 
+#main,
+footer{
+    // width: 2480px; // A4 Size Paper 2480 x 3508 pixels
+    width: 991px;
+}
+
 #main p{
    line-height: 1.8rem;
 }
+
 
 @media print {
 

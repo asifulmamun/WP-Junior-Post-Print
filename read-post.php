@@ -99,7 +99,7 @@
     <link rel="stylesheet" href="<?php echo plugins_url('assets/dist/css/app.css', __FILE__); ?>">
 </head>
 <body>
-    <main id="main" class="w-full md:w-7/12 container mx-auto p-2 md:p-4">
+    <main id="main" class=" mx-auto p-2 md:p-4">
         <div class="flex justify-center">
             <a href="<?php echo get_home_url(); ?>"><img id="logo" class="max-h-52" src="<?php echo $logo_url ; ?>" alt="<?php echo $site_title; ?>"></a>
         </div>
@@ -107,7 +107,7 @@
             <div id="dayString" class="col-span-4 md:col-span-2 bg-yellow-300 text-center font-bold text-black py-1.5"></div>
             <div id="dateString" class="col-span-8 md:col-span-8 font-bold py-1.5"></div>
         </div>
-        <img class="w-full print:img-fit" src="<?php  echo $post_thumbnail_url; ?>" alt="<?php echo $post_title; ?>">
+        <!-- <img class="w-full print:img-fit" src="<?php  //echo $post_thumbnail_url; ?>" alt="<?php //echo $post_title; ?>"> -->
         <h1 id="title" class="text-red-500 text-xl md:text-4xl font-bold text-center my-8"><?php echo $post_title;?></h1>
         <div class="columns-2 print:columns-2 text-sm md:text-base">
             <h3 class="font-bold text-lg flex pb-2">
@@ -116,13 +116,20 @@
                 </svg>
                 <?php echo $site_title; ?>: <?php echo $post_date; ?>
             </h3>
+            <img class="w-full print:img-fit" src="<?php  echo $post_thumbnail_url; ?>" alt="<?php echo $post_title; ?>">
             <?php echo $post_content; ?>
         </div>
+
+        <div id="contact" class="pt-8 text-center text-sm">
+            <hr>
+            <p class="pt-4">সম্পাদক- ইঞ্জিঃ মোঃ আল-আমিন মোল্যা।  প্রকাশক- মোঃ মাসুদ রানা। নির্বাহী সম্পাদক- মোঃ পিয়ারুল ইসলাম। সম্পাদক মন্ডলীর সভাপতি- মোঃ মজিবুর রহমান ভুঁইয়া। ব্যবস্থাপনা সম্পাদক- মোঃ আব্দুর রহিম (সবুজ)</p>
+            <p>যোগাযোগ: দক্ষিন শ্যামপুর, হেমায়েতপুর, সাভার, ঢাকা।<br/>মোবাইল: ০১৭৬৬-১৭৩০০০, ০১৭১৮-৬৫১৯৮০, ০১৭১৯-৫৫০১৩৬। ই-মেইল:  dailymuktisamachar@gmail.com</p>
+        </div>
     </main>
-    <footer id="footer" class="flex mx-auto gap-3 justify-center w-full py-3">
-        <button id="printBtn" class="mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Print</button>
-        <button id="goBackButton" class="mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Back</button>
-        <button id="download" class="mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Download</button>
+    <footer id="footer" class="flex mx-auto gap-3 justify-center py-3">
+        <button id="printBtn" class="mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">প্রিন্ট করুন</button>
+        <button id="download" class="mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">সংরক্ষণ করুন</button>
+        <button id="goBackButton" class="mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">পিছনে</button>
     </footer>
     <!-- https://github.com/AhmedMRaihan/BanglaDateJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/AhmedMRaihan/BanglaDateJS@master/src/buetDateTime.js"></script>
@@ -139,7 +146,10 @@
     <script>
         document.getElementById('download').addEventListener('click', downloadCanvasAsImage);
         function downloadCanvasAsImage() {
-            html2canvas(document.querySelector("#main")).then(canvas => {
+            const scale = 4;
+            html2canvas(document.querySelector("#main"), {
+                scale: scale,
+            }).then(canvas => {
                 // Convert canvas to data URL
                 const dataURL = canvas.toDataURL('image/png');
 
