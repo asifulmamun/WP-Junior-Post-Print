@@ -96,7 +96,14 @@
     <meta name="twitter:description" content="<?php echo strip_tags(get_the_excerpt()); ?>">
     <meta name="twitter:image" content="<?php echo get_the_post_thumbnail_url(); ?>">
     <meta name="twitter:card" content="<?php echo strip_tags(get_the_title()); // title ?> - <?php echo $site_title; ?>">
+    
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="<?php echo plugins_url('assets/dist/css/app.css', __FILE__); ?>">
+    
 </head>
 <body>
     <main id="main" class=" mx-auto p-2 md:p-4">

@@ -26,11 +26,63 @@ footer{
 }
 
 #main p{
-   line-height: 1.8rem;
+    line-height: 1.8rem;
 }
 
 
+
+
+.hind-siliguri-light {
+    font-family: "Hind Siliguri", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.hind-siliguri-regular {
+    font-family: "Hind Siliguri", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.hind-siliguri-medium {
+    font-family: "Hind Siliguri", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.hind-siliguri-semibold {
+    font-family: "Hind Siliguri", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.hind-siliguri-bold {
+    font-family: "Hind Siliguri", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+body{
+    font-family: "Hind Siliguri", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1{
+    font-family: "Hind Siliguri", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
 @media print {
+    
+    
+    /* Printing 2 Column at paragraph o r content in single print page */
+    .print\:columns-2 {
+        @apply columns-2;
+        /* column-count: 2; */
+    }
+
 
     // Custom image size print:img-fit
     .print\:img-fit {

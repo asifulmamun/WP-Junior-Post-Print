@@ -1,14 +1,10 @@
-@tailwind base;
+/* @tailwind base;
 
 @tailwind components;
 
 @tailwind utilities;
 
 
-/* Printing 2 Column at paragraph o r content in single print page */
-@media print {
-    .print\:columns-2 {
-        @apply columns-2;
-        /* column-count: 2; */
-    }
-}
+body{
+    @apply bg-blue;
+} */
