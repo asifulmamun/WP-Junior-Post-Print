@@ -101,14 +101,14 @@
 <body>
     <main id="main" class=" mx-auto p-2 md:p-4">
         <div class="flex justify-center">
-            <a href="<?php echo get_home_url(); ?>"><img id="logo" class="max-h-52" src="<?php echo $logo_url ; ?>" alt="<?php echo $site_title; ?>"></a>
+            <a href="<?php echo get_home_url(); ?>"><img id="logo" class="max-h-52" src="https://dailymuktisamachar.com/wp-content/uploads/2024/02/DMS-Logo.png" alt="<?php echo $site_title; ?>"></a>
         </div>
         <div class="grid grid-cols-12 gap-4 bg-black text-white my-3">
             <div id="dayString" class="col-span-4 md:col-span-2 bg-yellow-300 text-center font-bold text-black py-1.5"></div>
             <div id="dateString" class="col-span-8 md:col-span-8 font-bold py-1.5"></div>
         </div>
         <!-- <img class="w-full print:img-fit" src="<?php  //echo $post_thumbnail_url; ?>" alt="<?php //echo $post_title; ?>"> -->
-        <h1 id="title" class="text-red-500 text-xl md:text-4xl font-bold text-center my-8"><?php echo $post_title;?></h1>
+        <h1 id="title" class="text-black text-xl md:text-4xl font-bold text-center my-8"><?php echo $post_title;?></h1>
         <div class="columns-2 print:columns-2 text-sm md:text-base">
             <h3 class="font-bold text-lg flex pb-2">
                 <svg class="w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
