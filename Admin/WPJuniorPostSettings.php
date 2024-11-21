@@ -74,6 +74,7 @@ class WPJuniorPostSettings {
         register_setting('wp_junior_post_settings_group', 'wp_junior_post_mail_link');
         register_setting('wp_junior_post_settings_group', 'wp_junior_post_print_layout_logo');
         register_setting('wp_junior_post_settings_group', 'wp_junior_post_qr_code');
+        register_setting('wp_junior_post_settings_group', 'wp_junior_post_footer_text');
 
         // Add a settings section
         add_settings_section(
@@ -83,7 +84,7 @@ class WPJuniorPostSettings {
             'wp-junior-post-settings'  // Page slug
         );
 
-        // Add fields for Facebook, website, mail links, print layout logo, and QR code
+        // Add fields for Facebook, website, mail links, print layout logo, QR code, and footer text
         add_settings_field(
             'wpjp_facebook_link',      // Field ID
             'Facebook Link',           // Field title
@@ -120,6 +121,14 @@ class WPJuniorPostSettings {
             'wpjp_qr_code',
             'QR Code',
             [$this, 'qrCodeCallback'],
+            'wp-junior-post-settings',
+            'wpjp_main_section'
+        );
+
+        add_settings_field(
+            'wpjp_footer_text',
+            'Footer Text',
+            [$this, 'footerTextCallback'],
             'wp-junior-post-settings',
             'wpjp_main_section'
         );
@@ -160,5 +169,17 @@ class WPJuniorPostSettings {
         $value = get_option('wp_junior_post_qr_code', '');
         echo '<input type="text" id="wp_junior_post_qr_code" name="wp_junior_post_qr_code" value="' . esc_attr($value) . '" class="regular-text" />';
         echo '<button type="button" class="button wpjp-upload-button" data-target="wp_junior_post_qr_code">Select QR Code</button>';
+    }
+
+    // Footer text field callback
+    public function footerTextCallback() {
+        $value = get_option('wp_junior_post_footer_text', '');
+        wp_editor($value, 'wp_junior_post_footer_text', array(
+            'textarea_name' => 'wp_junior_post_footer_text',
+            'media_buttons' => true,
+            'textarea_rows' => 10,
+            'teeny' => false,
+            'quicktags' => true
+        ));
     }
 }

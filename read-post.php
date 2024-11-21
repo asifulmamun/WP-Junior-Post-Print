@@ -12,7 +12,7 @@
     $site_title = get_bloginfo('name'); // Site Title
     $favicon_url = get_site_icon_url(); // favicon url
     $post_id = isset($_GET['post']) ? $_GET['post'] : '';
-    
+    $footer_text = get_option('wp_junior_post_footer_text');
 
     
     // Get post data and render the template with the post data

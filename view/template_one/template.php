@@ -62,7 +62,7 @@
 
         <div id="contact" class="pt-8 text-center text-sm">
             <hr>
-            <p>যোগাযোগ: হয়বতপুর, নাটোর।<br/>ই-মেইল:  dailymuktisamachar@gmail.com</p>
+            <?php echo $footer_text; ?>
         </div>
     </main>
     <footer id="footer" class="flex mx-auto gap-3 justify-center py-3">
