@@ -516,6 +516,9 @@ video {
 .box-border {
   box-sizing: border-box;
 }
+.inline-block {
+  display: inline-block;
+}
 .flex {
   display: flex;
 }
@@ -528,6 +531,9 @@ video {
 .max-h-52 {
   max-height: 13rem;
 }
+.max-h-8 {
+  max-height: 2rem;
+}
 .w-6 {
   width: 1.5rem;
 }
@@ -537,12 +543,18 @@ video {
 .w-full {
   width: 100%;
 }
+.flex-1 {
+  flex: 1 1 0%;
+}
 .columns-2 {
   -moz-columns: 2;
        columns: 2;
 }
 .grid-cols-12 {
   grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 .flex-row {
   flex-direction: row;
@@ -558,6 +570,9 @@ video {
 }
 .gap-3 {
   gap: 0.75rem;
+}
+.overflow-hidden {
+  overflow: hidden;
 }
 .rounded {
   border-radius: 0.25rem;
