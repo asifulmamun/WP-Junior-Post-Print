@@ -8,12 +8,19 @@ Author URI: https://asifulmamun.info.bd
 
 */
 
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+
 define('PLUGIN_DIR', plugin_dir_path(__FILE__) );
 define('FILE_DIR', dirname( __FILE__ ) );
 
 if( file_exists( FILE_DIR . '/vendor/autoload.php' ) ){
     require_once FILE_DIR . '/vendor/autoload.php';
 }
+
 
 
 if(!class_exists('WP_Junior_Post_Print')){
@@ -43,7 +50,6 @@ if(!class_exists('WP_Junior_Post_Print')){
         }
     }
 }
-
 new WP_Junior_Post_Print();
 
 
@@ -64,6 +70,11 @@ function add_text_before_content($content) {
     }
     return $content;
 }
-
 // Hook the function to the_content filter
 add_filter('the_content', 'add_text_before_content');
+
+
+
+// Admin Settings
+use WPJuniorPostPrint\Admin\WPJuniorPostSettings;
+new WPJuniorPostSettings();

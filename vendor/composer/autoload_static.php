@@ -7,14 +7,14 @@ namespace Composer\Autoload;
 class ComposerStaticInit0edc58b16ab78e5c285efa1f7b1eb2e2
 {
     public static $prefixLengthsPsr4 = array (
-        '\\' => 
+        'W' => 
         array (
-            '\\' => 1,
+            'WPJuniorPostPrint\\' => 18,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        '\\' => 
+        'WPJuniorPostPrint\\' => 
         array (
             0 => __DIR__ . '/../..' . '/',
         ),
