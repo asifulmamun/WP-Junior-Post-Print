@@ -17,8 +17,23 @@ document.getElementById("goBackButton").addEventListener("click", function() {
 document.getElementById('download').addEventListener('click', downloadCanvasAsImage);
 function downloadCanvasAsImage() {
     const scale = 4;
-    html2canvas(document.querySelector("#main"), {
+    const mainElement = document.querySelector("#main");
+    const clone = mainElement.cloneNode(true);
+    
+    // Adjust styles to prevent overlap and ensure proper height
+    clone.style.margin = "20px"; // Add margin to prevent overlap
+    clone.style.padding = "10px"; // Add padding for better spacing
+    clone.style.boxSizing = "border-box"; // Ensure padding is included in width/height
+
+    // Set a minimum height to avoid content overlap
+    clone.style.minHeight = "600px"; // Adjust as necessary for your layout
+
+    document.body.appendChild(clone);
+
+    html2canvas(clone, {
         scale: scale,
+        width: clone.scrollWidth,
+        height: clone.scrollHeight
     }).then(canvas => {
         // Convert canvas to data URL
         const dataURL = canvas.toDataURL('image/png');
@@ -34,6 +49,7 @@ function downloadCanvasAsImage() {
         document.body.appendChild(downloadLink);
         downloadLink.click();
         document.body.removeChild(downloadLink);
+        document.body.removeChild(clone); // Remove the cloned element after download
     });
 }
 
