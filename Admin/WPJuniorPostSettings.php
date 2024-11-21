@@ -7,6 +7,12 @@ class WPJuniorPostSettings {
     public function __construct() {
         add_action('admin_menu', [$this, 'addSettingsMenu']);
         add_action('admin_init', [$this, 'registerSettings']);
+        add_action('admin_enqueue_scripts', [$this, 'enqueueMediaLibrary']);
+    }
+
+    // Enqueue WordPress media library scripts
+    public function enqueueMediaLibrary() {
+        wp_enqueue_media();
     }
 
     // Add menu to WP settings
@@ -38,6 +44,25 @@ class WPJuniorPostSettings {
                 ?>
             </form>
         </div>
+        <script>
+            jQuery(document).ready(function($){
+                $('.wpjp-upload-button').click(function(e) {
+                    e.preventDefault();
+                    var button = $(this);
+                    var target = button.data('target');
+                    var custom_uploader = wp.media({
+                        title: 'Select Image',
+                        button: {
+                            text: 'Use this image'
+                        },
+                        multiple: false
+                    }).on('select', function() {
+                        var attachment = custom_uploader.state().get('selection').first().toJSON();
+                        $('#' + target).val(attachment.url);
+                    }).open();
+                });
+            });
+        </script>
         <?php
     }
 
@@ -47,6 +72,8 @@ class WPJuniorPostSettings {
         register_setting('wp_junior_post_settings_group', 'wp_junior_post_facebook_link');
         register_setting('wp_junior_post_settings_group', 'wp_junior_post_website_link');
         register_setting('wp_junior_post_settings_group', 'wp_junior_post_mail_link');
+        register_setting('wp_junior_post_settings_group', 'wp_junior_post_print_layout_logo');
+        register_setting('wp_junior_post_settings_group', 'wp_junior_post_qr_code');
 
         // Add a settings section
         add_settings_section(
@@ -56,7 +83,7 @@ class WPJuniorPostSettings {
             'wp-junior-post-settings'  // Page slug
         );
 
-        // Add fields for Facebook, website, and mail links
+        // Add fields for Facebook, website, mail links, print layout logo, and QR code
         add_settings_field(
             'wpjp_facebook_link',      // Field ID
             'Facebook Link',           // Field title
@@ -80,11 +107,27 @@ class WPJuniorPostSettings {
             'wp-junior-post-settings',
             'wpjp_main_section'
         );
+
+        add_settings_field(
+            'wpjp_print_layout_logo',
+            'Print Layout Logo',
+            [$this, 'printLayoutLogoCallback'],
+            'wp-junior-post-settings',
+            'wpjp_main_section'
+        );
+
+        add_settings_field(
+            'wpjp_qr_code',
+            'QR Code',
+            [$this, 'qrCodeCallback'],
+            'wp-junior-post-settings',
+            'wpjp_main_section'
+        );
     }
 
     // Section callback
     public function sectionCallback() {
-        echo '<p>Enter your custom links below:</p>';
+        echo '<p>Enter your custom links and images below:</p>';
     }
 
     // Facebook link field callback
@@ -104,6 +147,18 @@ class WPJuniorPostSettings {
         $value = get_option('wp_junior_post_mail_link', '');
         echo '<input type="email" name="wp_junior_post_mail_link" value="' . esc_attr($value) . '" class="regular-text" />';
     }
+
+    // Print layout logo field callback
+    public function printLayoutLogoCallback() {
+        $value = get_option('wp_junior_post_print_layout_logo', '');
+        echo '<input type="text" id="wp_junior_post_print_layout_logo" name="wp_junior_post_print_layout_logo" value="' . esc_attr($value) . '" class="regular-text" />';
+        echo '<button type="button" class="button wpjp-upload-button" data-target="wp_junior_post_print_layout_logo">Select Logo</button>';
+    }
+
+    // QR code field callback
+    public function qrCodeCallback() {
+        $value = get_option('wp_junior_post_qr_code', '');
+        echo '<input type="text" id="wp_junior_post_qr_code" name="wp_junior_post_qr_code" value="' . esc_attr($value) . '" class="regular-text" />';
+        echo '<button type="button" class="button wpjp-upload-button" data-target="wp_junior_post_qr_code">Select QR Code</button>';
+    }
 }
-
-
