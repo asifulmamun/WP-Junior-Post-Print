@@ -1,30 +1,21 @@
 <?php
     /*
-        Template Name: Custom Single Page
+        Template Name: Data Post
     */
-
 
     // Get the saved values from the options table
     $facebook_link = get_option('wp_junior_post_facebook_link');
     $website_link = get_option('wp_junior_post_website_link');
     $mail_link = get_option('wp_junior_post_mail_link');
-    $logo_url = get_option('wp_junior_post_print_layout_logo');
+    $logo_url = (get_option('wp_junior_post_print_layout_logo')) ? get_option('wp_junior_post_print_layout_logo') : get_site_icon_url();
     $qr_code_url = get_option('wp_junior_post_qr_code');
-
-    $custom_logo_id = get_theme_mod('custom_logo');
-    $logo_url = '';
-    if ($custom_logo_id) {
-        $custom_logo = wp_get_attachment_image_src($custom_logo_id, 'full');
-        if ($custom_logo) {
-            $logo_url = $custom_logo[0]; // URL of the custom logo
-        }
-    }
     $site_title = get_bloginfo('name'); // Site Title
-    $logo_url = ($logo_url ? $logo_url : $site_title); // Logo
     $favicon_url = get_site_icon_url(); // favicon url
     $post_id = isset($_GET['post']) ? $_GET['post'] : '';
     
 
+    
+    // Get post data and render the template with the post data
     if ($post_id){
         // Set up the post query
         $post_query = new WP_Query(array(

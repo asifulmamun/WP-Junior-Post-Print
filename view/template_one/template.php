@@ -1,3 +1,6 @@
+<?php
+    // Template Name: Template One
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,11 +25,22 @@
 <body>
     <main id="main" class=" mx-auto p-2 md:p-4">
         <div class="flex justify-center">
-            <a href="<?php echo get_home_url(); ?>"><img id="logo" class="max-h-52" src="https://dailymuktisamachar.com/wp-content/uploads/2024/02/DMS-Logo.png" alt="<?php echo $site_title; ?>"></a>
+            <a href="<?php echo get_home_url(); ?>"><img id="logo" class="max-h-52" src="<?php echo esc_url($logo_url); ?>" alt="<?php echo $site_title; ?>"></a>
 			<a target="_blank" href="https://dailymuktisamachar.com/wp-content/uploads/2024/11/QR-DMS.jpg"><img id="logo" class="max-h-52" src="https://dailymuktisamachar.com/wp-content/uploads/2024/11/QR-DMS.jpg" alt="QR Code"></a>
         </div>
 
-        
+        <div class="flex flex-row gap-2 text-white box-border justify-around">
+            <div class="px-2 my-1 bg-blue-500">
+                <a href="<?php echo $facebook_link; ?>" target="_blank"><?php echo $facebook_link; ?></a>
+            </div>
+            <div class="px-2 my-1 bg-green-500">
+                <a href="<?php echo $website_link; ?>" target="_blank"><?php echo $website_link; ?></a>
+            </div>
+            <div class="px-2 my-1 bg-red-500">
+                <a href="mailto:<?php echo $mail_link; ?>" target="_blank"><?php echo $mail_link; ?></a>
+            </div>
+        </div>
+
         <div class="grid grid-cols-12 bg-black text-white box-border">
             <div id="banglaDayString" class="col-span-8 md:col-span-3 font-bold bg-yellow-300 text-black py-1.5 px-2 border border-l border-white"></div>
             <div id="banglaDateString" class="col-span-8 md:col-span-3 font-bold py-1.5 px-2 border border-l border-white"></div>
@@ -34,19 +48,6 @@
             <div id="arabicDateString" class="col-span-8 md:col-span-3 font-bold py-1.5 px-2 border border-l border-white"></div>
         </div>
 
-        <?php
-
-
-// Print the retrieved values
-echo '<h2>Saved Data</h2>';
-echo '<p>Facebook Link: ' . esc_html($facebook_link) . '</p>';
-echo '<p>Website Link: ' . esc_html($website_link) . '</p>';
-echo '<p>Mail Link: ' . esc_html($mail_link) . '</p>';
-echo '<p>Print Layout Logo: <img src="' . esc_url($logo_url) . '" alt="Print Layout Logo" style="max-width: 200px;" /></p>';
-echo '<p>QR Code: <img src="' . esc_url($qr_code_url) . '" alt="QR Code" style="max-width: 200px;" /></p>';
-?>
-
-        <!-- <img class="w-full print:img-fit" src="<?php  //echo $post_thumbnail_url; ?>" alt="<?php //echo $post_title; ?>"> -->
         <h1 id="title" class="text-black text-xl md:text-4xl font-bold text-center my-8"><?php echo $post_title;?></h1>
         <div class="columns-2 print:columns-2 text-sm md:text-base">
             <h3 class="font-bold text-lg flex pb-2">
