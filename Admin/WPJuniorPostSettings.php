@@ -75,6 +75,7 @@ class WPJuniorPostSettings {
         register_setting('wp_junior_post_settings_group', 'wp_junior_post_print_layout_logo');
         register_setting('wp_junior_post_settings_group', 'wp_junior_post_qr_code');
         register_setting('wp_junior_post_settings_group', 'wp_junior_post_footer_text');
+        register_setting('wp_junior_post_settings_group', 'wp_junior_post_template_choice');
 
         // Add a settings section
         add_settings_section(
@@ -84,7 +85,7 @@ class WPJuniorPostSettings {
             'wp-junior-post-settings'  // Page slug
         );
 
-        // Add fields for Facebook, website, mail links, print layout logo, QR code, and footer text
+        // Add fields for Facebook, website, mail links, print layout logo, QR code, footer text, and template choice
         add_settings_field(
             'wpjp_facebook_link',      // Field ID
             'Facebook Link',           // Field title
@@ -129,6 +130,14 @@ class WPJuniorPostSettings {
             'wpjp_footer_text',
             'Footer Text',
             [$this, 'footerTextCallback'],
+            'wp-junior-post-settings',
+            'wpjp_main_section'
+        );
+
+        add_settings_field(
+            'wpjp_template_choice',
+            'Template Choice',
+            [$this, 'templateChoiceCallback'],
             'wp-junior-post-settings',
             'wpjp_main_section'
         );
@@ -181,5 +190,16 @@ class WPJuniorPostSettings {
             'teeny' => false,
             'quicktags' => true
         ));
+    }
+
+    // Template choice field callback
+    public function templateChoiceCallback() {
+        $value = get_option('wp_junior_post_template_choice', 'template_one');
+        ?>
+        <select name="wp_junior_post_template_choice" class="regular-text">
+            <option value="1" <?php selected($value, 'template_one'); ?>>Template One</option>
+            <option value="2" <?php selected($value, 'template_two'); ?>>Template Two</option>
+        </select>
+        <?php
     }
 }

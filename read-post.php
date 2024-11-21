@@ -13,7 +13,7 @@
     $favicon_url = get_site_icon_url(); // favicon url
     $post_id = isset($_GET['post']) ? $_GET['post'] : '';
     $footer_text = get_option('wp_junior_post_footer_text');
-
+    $template_choice = get_option('wp_junior_post_template_choice');
     
     // Get post data and render the template with the post data
     if ($post_id){
@@ -36,8 +36,16 @@
                 $post_date = get_the_date(); // Get post date
                 $post_time = get_the_time(); // Get post time
                 
-                // Main Content Rendering
-                include 'view/template_one/template.php';
+                if($template_choice == 1){
+                    // Main Content Rendering
+                    include 'view/template_one/template.php';
+                } elseif($template_choice == 2){
+                    // Main Content Rendering
+                    include 'view/template_two/template.php';
+                } else{
+                    // One is default template
+                    include 'view/template_one/template.php';
+                }
 
             }
         } else{
