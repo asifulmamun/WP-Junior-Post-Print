@@ -156,22 +156,19 @@
         }
 
         // Determine the suffix for the day
-        var suffix;
-        switch (day) {
-            case 1: case 21: case 31:
-                suffix = "লা";
-                break;
-            case 2: case 22:
-                suffix = "রা";
-                break;
-            case 3: case 23:
-                suffix = "রা";
-                break;
-            case 4: case 24:
-                suffix = "ঠা";
-                break;
-            default:
-                suffix = "ই";
+        function getSuffix(day) {
+            switch (day) {
+                case 1: case 21: case 31:
+                    return "লা";
+                case 2: case 22:
+                    return "রা";
+                case 3: case 23:
+                    return "রা";
+                case 4: case 24:
+                    return "ঠা";
+                default:
+                    return "ই";
+            }
         }
 
         // Calculate Islamic date
@@ -261,27 +258,23 @@
             var iMonthNames = ["মহররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি", "জমাদিউল আউয়াল", "জমাদিউস সানি",
                 "রজব", "শাবান", "রমজান", "শাওয়াল", "জিলকদ", "জিলহজ"];
             var iDate = calculatingIslamicDate(date, adjustment);
-            // var outputIslamicDate = wdNames[iDate[4]] + ", " + iDate[5] + " " + iMonthNames[iDate[6]] + " " + iDate[7] + " AH";
-            var outputIslamicDate = en2bnNumber(iDate[5]) + " " + iMonthNames[iDate[6]] + " " + en2bnNumber(iDate[7]);
+            var outputIslamicDate = en2bnNumber(iDate[5]) + getSuffix(iDate[5]) + " " + iMonthNames[iDate[6]] + " " + en2bnNumber(iDate[7]);
             return outputIslamicDate;
         }
 
         // Get today's date
         var today = new Date();
-        var day = en2bnNumber(today.getDate());
+        var day = today.getDate();
         var monthNames = ["জানুয়ারী", "ফেব্রুয়ারী", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"];
         var month = monthNames[today.getMonth()];
-        var year = en2bnNumber(today.getFullYear());
+        var year = today.getFullYear();
 
-        // var customDate = new Date();
         var banglaDayString = new buetDateConverter().convert("l");
         var banglaDateString = new buetDateConverter().convert("d F, Y");
         document.getElementById('banglaDayString').textContent = 'প্রিন্ট এর তারিখঃ ' + banglaDayString;
         document.getElementById('banglaDateString').textContent = banglaDateString;
-        document.getElementById('englishDateString').textContent = day + suffix + " " + month + " " + year;
+        document.getElementById('englishDateString').textContent = en2bnNumber(day) + getSuffix(day) + " " + month + " " + en2bnNumber(year);
         document.getElementById('arabicDateString').textContent = writeIslamicDate(new Date(), 0);
-
-
     </script>
 
     <!-- https://html2canvas.hertzen.com/ -->
