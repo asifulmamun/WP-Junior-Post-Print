@@ -110,9 +110,11 @@
         </div>
 
         
-        <div class="grid grid-cols-12 gap-4 bg-black text-white my-3">
-            <div id="dayString" class="col-span-4 md:col-span-2 bg-yellow-300 text-center font-bold text-black py-1.5"></div>
-            <div id="dateString" class="col-span-8 md:col-span-8 font-bold py-1.5"></div>
+        <div class="grid grid-cols-12 bg-black text-white box-border">
+            <div id="banglaDayString" class="col-span-8 md:col-span-3 font-bold bg-yellow-300 text-black py-1.5 px-2 border border-l border-white"></div>
+            <div id="banglaDateString" class="col-span-8 md:col-span-3 font-bold py-1.5 px-2 border border-l border-white"></div>
+            <div id="englishDateString" class="col-span-8 md:col-span-3 font-bold py-1.5 px-2 border border-l border-white"></div>
+            <div id="arabicDateString" class="col-span-8 md:col-span-3 font-bold py-1.5 px-2 border border-l border-white"></div>
         </div>
 
 
@@ -142,19 +144,38 @@
     </footer>
     <!-- https://github.com/AhmedMRaihan/BanglaDateJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/AhmedMRaihan/BanglaDateJS@master/src/buetDateTime.js"></script>
+    
     <script>
-        // var customDate = new Date();
-        var dayString = new buetDateConverter().convert("l");
-        var dateString = new buetDateConverter().convert("j F, Y");
-        document.getElementById('dayString').textContent = dayString;
-        document.getElementById('dateString').textContent = dateString;
-
-        // Console log Arabic Hijri data with dynamic Bangla month names using custom calculation
-        function gmod(n, m) {
-            return ((n % m) + m) % m;
+        // En to Bn
+        function en2bnNumber(number) {
+            var english_numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+            var bangla_numbers = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+            return number.toString().split('').map(function(digit) {
+                return bangla_numbers[english_numbers.indexOf(digit)];
+            }).join('');
         }
 
-        function kuwaiticalendar(date, adjust) {
+        // Determine the suffix for the day
+        var suffix;
+        switch (day) {
+            case 1: case 21: case 31:
+                suffix = "লা";
+                break;
+            case 2: case 22:
+                suffix = "রা";
+                break;
+            case 3: case 23:
+                suffix = "রা";
+                break;
+            case 4: case 24:
+                suffix = "ঠা";
+                break;
+            default:
+                suffix = "ই";
+        }
+
+        // Calculate Islamic date
+        function calculatingIslamicDate(date, adjust) {
             var today = date ? new Date(+date) : new Date();
             if (adjust) {
                 today.setDate(today.getDate() + +adjust);
@@ -203,7 +224,7 @@
                 month = ee - 13;
             }
             year = cc - 4716;
-            var wd = gmod(jd + 1, 7) + 1;
+            var wd = ((jd + 1) % 7 + 7) % 7 + 1;
 
             var iyear = 10631. / 30.;
             var epochastro = 1948084;
@@ -234,16 +255,33 @@
             ];
         }
 
+        // Write Islamic date
         function writeIslamicDate(date, adjustment) {
             var wdNames = ["আহাদ", "ইথনিন", "থুলাথা", "আরবা", "খামস", "জুমু'আহ", "সাবত"];
             var iMonthNames = ["মহররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি", "জমাদিউল আউয়াল", "জমাদিউস সানি",
                 "রজব", "শাবান", "রমজান", "শাওয়াল", "জিলকদ", "জিলহজ"];
-            var iDate = kuwaiticalendar(date, adjustment);
-            var outputIslamicDate = wdNames[iDate[4]] + ", " + iDate[5] + " " + iMonthNames[iDate[6]] + " " + iDate[7] + " AH";
+            var iDate = calculatingIslamicDate(date, adjustment);
+            // var outputIslamicDate = wdNames[iDate[4]] + ", " + iDate[5] + " " + iMonthNames[iDate[6]] + " " + iDate[7] + " AH";
+            var outputIslamicDate = en2bnNumber(iDate[5]) + " " + iMonthNames[iDate[6]] + " " + en2bnNumber(iDate[7]);
             return outputIslamicDate;
         }
 
-        console.log("হিজরি তারিখ:", writeIslamicDate());
+        // Get today's date
+        var today = new Date();
+        var day = en2bnNumber(today.getDate());
+        var monthNames = ["জানুয়ারী", "ফেব্রুয়ারী", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"];
+        var month = monthNames[today.getMonth()];
+        var year = en2bnNumber(today.getFullYear());
+
+        // var customDate = new Date();
+        var banglaDayString = new buetDateConverter().convert("l");
+        var banglaDateString = new buetDateConverter().convert("d F, Y");
+        document.getElementById('banglaDayString').textContent = 'প্রিন্ট এর তারিখঃ ' + banglaDayString;
+        document.getElementById('banglaDateString').textContent = banglaDateString;
+        document.getElementById('englishDateString').textContent = day + suffix + " " + month + " " + year;
+        document.getElementById('arabicDateString').textContent = writeIslamicDate(new Date(), 0);
+
+
     </script>
 
     <!-- https://html2canvas.hertzen.com/ -->
