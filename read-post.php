@@ -25,7 +25,7 @@
     $post_id = isset($_GET['post']) ? $_GET['post'] : '';
     
 
-    if ($post_id):
+    if ($post_id){
         // Set up the post query
         $post_query = new WP_Query(array(
             'p' => $post_id, // Post ID to query
@@ -34,7 +34,7 @@
         ));
 
         // Check if there are any posts
-        if ($post_query->have_posts()):
+        if ($post_query->have_posts()){
             while ($post_query->have_posts()){
                 
                 $post_query->the_post();
@@ -49,20 +49,13 @@
                 include 'view/template_one/template.php';
 
             }
-
-
-
-
-                    
-
-        else:
-            // No posts found
+        } else{
+            
             echo 'No posts found.';
-        endif;
-        // Restore original post data
+        }
         wp_reset_postdata();
-    else:
+    } else{
         // No post ID provided
         echo 'No post ID provided.';
-    endif;
+    }
 ?>
