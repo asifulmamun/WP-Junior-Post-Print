@@ -23,8 +23,8 @@
     <script>var pageTitle = "<?php echo strip_tags(get_the_title()); // title ?> - <?php echo $site_title; ?>";</script>
 </head>
 
-<body>
-    <main id="main" class=" mx-auto p-2 md:p-4">
+<body id="body">
+    <main id="main" class=" mx-auto px-2 py-2 md:p-4">
         <div class="flex justify-center"><a href="<?php echo get_home_url(); ?>"><img id="logo" class="max-h-52" src="<?php echo esc_url($logo_url); ?>" alt="<?php echo $site_title; ?>"></a><a target="_blank" href="https://dailymuktisamachar.com/wp-content/uploads/2024/11/QR-DMS.jpg"><img id="logo" class="max-h-52" src="https://dailymuktisamachar.com/wp-content/uploads/2024/11/QR-DMS.jpg" alt="QR Code"></a></div>
         <div class="flex flex-row gap-2 text-white box-border justify-around max-h-8 overflow-hidden">
             <div class="px-2 my-1 bg-blue-500"><a href="<?php echo $facebook_link; ?>" target="_blank"><?php echo $facebook_link; ?></a></div>
@@ -43,7 +43,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                 </svg><?php echo $site_title; ?>: <?php echo $post_date; ?></h3><img class="w-full print:img-fit" src="<?php echo $post_thumbnail_url; ?>" alt="<?php echo $post_title; ?>"><?php echo $post_content; ?>
         </div>
-        <div id="contact" class="pt-8 text-center text-sm">
+        <div id="contact" class="pt-8 pb-6 text-center text-sm">
             <hr><?php echo $footer_text; ?>
         </div>
     </main>
@@ -53,8 +53,6 @@
         <button id="goBackButton" class="mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">পিছনে</button>
     </footer>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/AhmedMRaihan/BanglaDateJS@master/src/buetDateTime.js"></script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="<?php echo plugins_url('assets/dist/js/app.js', __FILE__); ?>"></script>
 </body>
-
 </html>
