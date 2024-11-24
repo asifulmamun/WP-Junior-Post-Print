@@ -12,52 +12,80 @@ document.getElementById("goBackButton").addEventListener("click", function () {
     window.history.back();
 });
 
-// https://html2canvas.hertzen.com/ HTML2Canvas
-const script = document.createElement('script');
-script.src = "https://html2canvas.hertzen.com/dist/html2canvas.min.js";
-document.head.appendChild(script);
-document.getElementById('download').addEventListener('click', downloadCanvasAsImage);
-function downloadCanvasAsImage() {
-    const scale = 4;
-    // const mainElement = document.querySelector("#main");
-    const mainElement = document.querySelector("main");
-    const clone = mainElement.cloneNode(true);
+// // https://html2canvas.hertzen.com/ HTML2Canvas
+// const script = document.createElement('script');
+// script.src = "https://html2canvas.hertzen.com/dist/html2canvas.min.js";
+// document.head.appendChild(script);
+// document.getElementById('download').addEventListener('click', downloadCanvasAsImage);
+// function downloadCanvasAsImage() {
+//     const scale = 4;
+//     // const mainElement = document.querySelector("#main");
+//     const mainElement = document.querySelector("main");
+//     const clone = mainElement.cloneNode(true);
     
-    // Adjust styles to prevent overlap and ensure proper height
-    clone.style.margin = "20px"; // Add margin to prevent overlap
-    clone.style.padding = "10px"; // Add padding for better spacing
-    clone.style.boxSizing = "border-box"; // Ensure padding is included in width/height
+//     // Adjust styles to prevent overlap and ensure proper height
+//     clone.style.margin = "20px"; // Add margin to prevent overlap
+//     clone.style.padding = "10px"; // Add padding for better spacing
+//     clone.style.boxSizing = "border-box"; // Ensure padding is included in width/height
 
-    // Set a minimum height to avoid content overlap
-    clone.style.minHeight = "600px"; // Adjust as necessary for your layout
+//     // Set a minimum height to avoid content overlap
+//     clone.style.minHeight = "600px"; // Adjust as necessary for your layout
 
+//     document.body.appendChild(clone);
+
+//     html2canvas(clone, {
+//         scale: scale,
+//         width: clone.scrollWidth,
+//         height: clone.scrollHeight
+//     }).then(canvas => {
+//         // Convert canvas to data URL
+//         const dataURL = canvas.toDataURL('image/png');
+
+//         // Create a link element
+//         const downloadLink = document.createElement('a');
+//         downloadLink.href = dataURL;
+        
+//         // Set the download attribute to specify the file name
+//         downloadLink.download = pageTitle;
+        
+//         // Simulate a click to trigger the download
+//         document.body.appendChild(downloadLink);
+//         downloadLink.click();
+//         document.body.removeChild(downloadLink);
+//         document.body.removeChild(clone); // Remove the cloned element after download
+//     });
+// }
+
+// HTML to Image
+document.getElementById('download').addEventListener('click', downloadFullPageAsImage);
+import domtoimage from 'dom-to-image';
+function downloadFullPageAsImage() {
+    const fullPageElement = document.getElementById('main'); // Capture the main element for the entire page
+
+    // Create a clone of the main element to ensure styles are applied correctly
+    const clone = fullPageElement.cloneNode(true);
     document.body.appendChild(clone);
 
-    html2canvas(clone, {
-        scale: scale,
-        width: clone.scrollWidth,
-        height: clone.scrollHeight
-    }).then(canvas => {
-        // Convert canvas to data URL
-        const dataURL = canvas.toDataURL('image/png');
+    // Adjust the clone's position to ensure it captures the correct content
+    clone.style.position = 'absolute';
+    clone.style.left = '0';
+    clone.style.top = '0';
+    clone.style.zIndex = '-1'; // Ensure it doesn't interfere with the view
 
-        // Create a link element
-        const downloadLink = document.createElement('a');
-        downloadLink.href = dataURL;
-        
-        // Set the download attribute to specify the file name
-        downloadLink.download = pageTitle;
-        
-        // Simulate a click to trigger the download
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
+    domtoimage.toJpeg(clone, { 
+        quality: 1.0,
+        bgcolor: '#ffffff', // Set background color to white for better image quality
+        width: clone.scrollWidth, // Set width to the scroll width of the main element
+        height: clone.scrollHeight // Set height to the scroll height of the main element
+    })
+    .then(function (dataUrl) {
+        var link = document.createElement('a');
+        link.download = pageTitle; // Updated file name for clarity
+        link.href = dataUrl;
+        link.click();
         document.body.removeChild(clone); // Remove the cloned element after download
     });
 }
-
-
-
 
 // En to Bn
 function en2bnNumber(number) {

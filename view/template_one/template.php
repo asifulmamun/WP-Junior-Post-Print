@@ -25,7 +25,7 @@
 
 <body id="body">
     <main id="main" class=" mx-auto px-2 py-2 md:p-4">
-        <div class="flex justify-center"><a href="<?php echo get_home_url(); ?>"><img id="logo" class="max-h-52" src="<?php echo esc_url($logo_url); ?>" alt="<?php echo $site_title; ?>"></a><a target="_blank" href="https://dailymuktisamachar.com/wp-content/uploads/2024/11/QR-DMS.jpg"><img id="logo" class="max-h-52" src="https://dailymuktisamachar.com/wp-content/uploads/2024/11/QR-DMS.jpg" alt="QR Code"></a></div>
+        <div class="flex justify-center"><a href="<?php echo get_home_url(); ?>"><img id="logo" class="max-h-52" src="<?php echo esc_url($logo_url); ?>" alt="<?php echo $site_title; ?>"></a><a target="_blank" href="<?php echo esc_url($qr_code_url); ?>"><img id="logo" class="max-h-52" src="<?php echo esc_url($qr_code_url); ?>" alt="QR Code"></a></div>
         <div class="flex flex-row gap-2 text-white box-border justify-around max-h-8 overflow-hidden">
             <div class="px-2 my-1 bg-blue-500"><a href="<?php echo $facebook_link; ?>" target="_blank"><?php echo $facebook_link; ?></a></div>
             <div class="px-2 my-1 bg-green-500"><a href="<?php echo $website_link; ?>" target="_blank"><?php echo $website_link; ?></a></div>
