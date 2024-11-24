@@ -2,7 +2,7 @@
 /*
 Plugin Name: WP Junior Post Print
 Description: From wp single post another single page template for single post
-Version: 1.0
+Version: 2.0.3
 Author: Al Mamun - asifulmamun
 Author URI: https://asifulmamun.info.bd
 
