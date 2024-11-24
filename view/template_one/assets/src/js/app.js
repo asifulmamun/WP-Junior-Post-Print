@@ -3,21 +3,24 @@ import "./app.scss";
 console.log("Log app.js");
 
 // Print
-document.getElementById('printBtn').addEventListener('click', function() {
-  window.print();
+document.getElementById('printBtn').addEventListener('click', function () {
+    window.print();
 });
 
 // Go Back
-document.getElementById("goBackButton").addEventListener("click", function() {
-  window.history.back();
+document.getElementById("goBackButton").addEventListener("click", function () {
+    window.history.back();
 });
 
-
-// https://html2canvas.hertzen.com/
+// https://html2canvas.hertzen.com/ HTML2Canvas
+const script = document.createElement('script');
+script.src = "https://html2canvas.hertzen.com/dist/html2canvas.min.js";
+document.head.appendChild(script);
 document.getElementById('download').addEventListener('click', downloadCanvasAsImage);
 function downloadCanvasAsImage() {
     const scale = 4;
-    const mainElement = document.querySelector("#main");
+    // const mainElement = document.querySelector("#main");
+    const mainElement = document.querySelector("main");
     const clone = mainElement.cloneNode(true);
     
     // Adjust styles to prevent overlap and ensure proper height
@@ -58,11 +61,11 @@ function downloadCanvasAsImage() {
 
 // En to Bn
 function en2bnNumber(number) {
-  var english_numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  var bangla_numbers = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
-  return number.toString().split('').map(function(digit) {
-      return bangla_numbers[english_numbers.indexOf(digit)];
-  }).join('');
+    var english_numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    var bangla_numbers = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+    return number.toString().split('').map(function (digit) {
+        return bangla_numbers[english_numbers.indexOf(digit)];
+    }).join('');
 }
 
 // Determine the suffix for the day
