@@ -197,7 +197,7 @@ class WPJuniorPostSettings {
         $value = get_option('wp_junior_post_template_choice', 'template_one');
         ?>
         <select name="wp_junior_post_template_choice" class="regular-text">
-            <option value="1" <?php selected($value, 'template_one'); ?>>Template One</option>
+            <option value="1" <?php selected($value, 'template_one'); ?>>Template One - Bangla</option>
             <option value="2" <?php selected($value, 'template_two'); ?>>Template Two</option>
         </select>
         <?php
